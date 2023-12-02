@@ -2,6 +2,7 @@
 #include <cmath>
 #include <math.h>
 #include <string>
+#include <windows.h>
 using namespace std;
 
 int funkcja1(int tab[], int b) {
@@ -47,25 +48,39 @@ int main() {
     string liczba;
     char czy;
     cout << "Witaj w konwerterze liczb binarnych na dziesietne !!! \n";
+    cout << endl;
     cout << "Jesli chcesz zaczac wpisz T/t, jesli chcesz zakonczyc wpisz K/k: ";
     cin >> czy;
     if (czy == 'T' || czy == 't') {
-        cout << "\nPodaj liczbe w systemie binarnym: ";
+        system("cls");
+        cout << "Podaj liczbe w systemie binarnym: ";
         cin >> liczba;
         int b = liczba.size();
         string przecinek = rozdzielPrzecinkiem(liczba);
+        cout << "\nLiczba w systemie dziesietnym: " << funkcja1(strtoarray(przecinek), b) << endl;
 
-        cout << "\nLiczba w systemie dziesiêtnym: " << funkcja1(strtoarray(przecinek), b);
-
-    }
-    else if (czy == 'K' || czy == 'k') {
-        cout << "\n...";
-        return 0;
+        for (int l = 1; l > 0; ++l) {
+            cout << "\nJesli chcesz kontunuowac wpisz T/t, jesli nie wpisz K/k: ";
+            cin >> czy;
+            if (czy == 'T' || czy == 't') {
+                system("cls");
+                cout << "Podaj liczbe w systemie binarnym: ";
+                cin >> liczba;
+                int b = liczba.size();
+                string przecinek = rozdzielPrzecinkiem(liczba);
+                cout << "\nLiczba w systemie dziesietnym: " << funkcja1(strtoarray(przecinek), b) << endl;
+            }
+            else {
+                system("cls");
+                cout << "\n...\n";
+                return 0;
+            }
+        }
     }
     else {
-        cout << "\n...";
+        system("cls");
+        cout << "\n...\n";
         return 0;
     }
-
     return 0;
 }
